@@ -23,12 +23,14 @@
                     <nav class="nav flex-column">
 
                       <% Category.all.each do |category| %>
-              <%= link_to category.title, category_path(category), class: "nav-link active" %>
-              <% end %>
+                          <%= active_link_to category.title, category_path(category), class: "list-group-item list-group-item-action list-group-item-success"%>
+                      <% end %>
            <!--<a class="nav-link active" aria-current="page" href="#">Active</a>
             <a class="nav-link" href="#">Link</a>
             <a class="nav-link" href="#">Link</a>
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>-->
+             <div class="price">
+
           </nav>
           </div>
 
@@ -42,3 +44,4 @@
 
   </body>
 </html>
+

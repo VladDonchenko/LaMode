@@ -1,11 +1,14 @@
+<div class="row db-6">
+<% @category.products.each do |product| %>
 <div class="col-lg-4 col-md-6 mb-4">
   <div class="card">
     <img src="..." class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title"><%= product.title %> </h5>
         <p class="card-text"><%= product.description %></p>
-        <p class="badge bg-light text-dark"><%= number_to_currency(product.price, unit: "UAH", separator: ",", delimiter: " ", format: "%n %u") %></p>
-        <a href="#" class="btn btn-success">Детальніше</a>
+        <a href="#" class="btn btn-success">Go somewhere</a>
       </div>
   </div>
 </div>
+<% end %>
+</div> 
