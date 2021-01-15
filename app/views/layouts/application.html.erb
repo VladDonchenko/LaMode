@@ -1,3 +1,13 @@
+<script>
+    $( document ).ready(function() {
+        $("#<%= params[:sort] %>").addClass("active");
+        <% if @category.present? %>
+        $("#<%= @category.title %>").addClass("active");
+        <% end %>
+    })
+</script>
+
+
 <!DOCTYPE html>
 
 <html>
@@ -29,12 +39,51 @@
             <a class="nav-link" href="#">Link</a>
             <a class="nav-link" href="#">Link</a>
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>-->
+
+        <%= form_with url: @category, class: "d-flex", method: :get, local:true do |f|  %>
+          <div class="input-group mb-3">
+            <span class="input-group-text">From:</span>
+            <%= f.text_field :min, id: :min, class: "form-control", placeholder:"min" , value: params[:min], type: "number" %>
+            <span class="input-group-text">to:</span>
+            <%= f.text_field :max, id: :max, class: "form-control", placeholder:"max", value: params[:max], type: "number" %>
+            <%= f.submit "Filter", class: "btn btn-outline-success" %>
+          <%= f.hidden_field :sort, id: :sort, value: params[:sort] %>
+          <%= f.hidden_field :directions, id: :directions, value: params[:directions]  %>
+        <%end %>
+</div> 
+
              <div class="price">
 
           </nav>
           </div>
 
           <div class="col-sm-9 col-12">
+            <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="10000">
+                  <img src="https://i.ytimg.com/vi/o3rodmgjBV8/maxresdefault.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="10000">
+                  <img src="https://g-store.com.ua/wp-content/uploads/2020/10/iphone-12-pro-kypit.png" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="10000">
+                  <img src="https://mobidevices.ru/images/2018/07/Apple-MacBook-2018.jpg" class="d-block w-100">
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </a>
+            </div>
+            <p></p>
+            <div>
+            </div>
+        
+
             <%= yield %>
           </div>
         </div>

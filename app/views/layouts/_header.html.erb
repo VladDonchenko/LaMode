@@ -22,10 +22,14 @@
           </ul>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Пошук" aria-label="Search" href ="">
-        <button class="btn btn-outline-dark" type="submit">Пошук</button>
-      </form>
+            <%= form_tag products_path, method: :get, class: "form-inline my-2 my-lg-0 search_form", id: "search-form" do %>
+              <%= text_field_tag(
+                  :search,
+                  params[:search],
+                  placeholder: "Search"
+              ) %>&nbsp;
+              <%= submit_tag "Search", class: 'btn btn-outline-dark' %>
+            <% end %>
     </div>
   </div>
 </nav>
