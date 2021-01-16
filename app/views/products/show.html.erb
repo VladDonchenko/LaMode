@@ -1,13 +1,6 @@
-<div class="row db-6">
-<% @category.products.each do |product| %>
-<div class="col-lg-4 col-md-6 mb-4">
-  <div class="card">
-    <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title"><%= product.title %> </h5>
-        <p class="card-text"><%= product.description %></p>
-        <a href="#" class="btn btn-success">Детальніше</a>
-      </div>
-  </div>
+<div class="row">
+  <%= render @products %>
 </div>
-<% end %>
+<div class="digg_pagination" style="text-align: center;">
+    <%= will_paginate @products, :container => false %>
+</div>
