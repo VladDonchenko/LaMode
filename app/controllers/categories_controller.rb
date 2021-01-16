@@ -10,47 +10,19 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @products = @category.products
-    
+        @products = Product.where(category_id: params[:id]).paginate(page: params[:page], per_page: 6)
+    if params[:sort] == 'lowPrice'
+      @products = Product.where(category_id: params[:id]).order(price: :ASC).paginate(page: params[:page], per_page: 6)
+    elsif params[:sort] == 'highPrice'
+      @products = Product.where(category_id: params[:id]).order(price: :DESC).paginate(page: params[:page], per_page: 6)
+    elsif params[:sort] == 'alphabetAsc'
+      @products = Product.where(category_id: params[:id]).order(name: :ASC).paginate(page: params[:page], per_page: 6)
+    elsif params[:sort] == 'alphabetDesc'
+      @products = Product.where(category_id: params[:id]).order(name: :DESC).paginate(page: params[:page], per_page: 6)
+    elsif params[:min] || params[:max]
+      @products = Product.where(category_id: params[:id], price: [params[:min]].first..[params[:max]].last).paginate(page: params[:page], per_page: 6)
+    end
    
-  end
-
-  def search
-    @categories_list = Category.all
-    @product_list = Product.where('title LIKE ?', "%#{params[:product_title.to_s]}%")
-    products_list
-    render :'categories/show'
-  end
-
-
-
-
-  def sort_column
-    Product.column_titles.include?(params[:sort]) ? params[:sort] : nil
-  end
-
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : nil
-  end
-
-
-  def minimum
-    params[:min].nil? || params[:min] == '' ? 0 : params[:min]
-  end
-
-  def maximum
-    params[:max].nil? ? 99_999_999_999 : params[:max]
-  end
-  def products_list
-    @products = if params[:min].nil? && params[:max].nil?
-                  sort_column && sort_direction ? @product_list.order("#{sort_column} #{sort_direction}") : @product_list
-                else
-                  if !(sort_column && sort_direction)
-                    @product_list.min_price(minimum).max_price(maximum).order(sort_column.to_s)
-                  else @product_list.min_price(minimum).max_price(maximum).order("#{sort_column} #{sort_direction}")
-                  end
-                end
-    @pagy, @products = pagy(@products)
   end
 
 end

@@ -40,16 +40,33 @@
             <a class="nav-link" href="#">Link</a>
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>-->
 
-        <%= form_with url: @category, class: "d-flex", method: :get, local:true do |f|  %>
+
           <div class="input-group mb-3">
-            <span class="input-group-text">From:</span>
-            <%= f.text_field :min, id: :min, class: "form-control", placeholder:"min" , value: params[:min], type: "number" %>
-            <span class="input-group-text">to:</span>
-            <%= f.text_field :max, id: :max, class: "form-control", placeholder:"max", value: params[:max], type: "number" %>
-            <%= f.submit "Filter", class: "btn btn-outline-success" %>
-          <%= f.hidden_field :sort, id: :sort, value: params[:sort] %>
-          <%= f.hidden_field :directions, id: :directions, value: params[:directions]  %>
-        <%end %>
+      
+
+            <div class="filter-list">
+      Sort by price:
+      <%= link_to ("From low to high"), products_path(sort: 'lowPrice'), class:'btn-custom-light' %>
+      <i>or</i>
+      <%= link_to ("From high to low"), products_path(sort: 'highPrice'), class:'btn-custom-light' %>
+    </div>
+    <div class="filter-list">
+      Sort by name:
+      <%= link_to ("A-Z"), products_path(sort: 'alphabetAsc'), class:'btn-custom-light' %>
+      <i>or</i>
+      <%= link_to ("Z-A"), products_path(sort: 'alphabetDesc'), class:'btn-custom-light' %>
+    </div>
+    <div class="filter-list">
+      <%= form_with url: products_path, method: :get, local: true do |form| %>
+        <%= form.number_field :min, class: "form-input-number",
+                            placeholder: "min price", value:"0"%>
+        <%= form.number_field :max, class: "form-input-number",
+                            placeholder: "max price" %>
+        <%= submit_tag "Filter", class: 'btn btn-outline-dark' do %>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        <% end %>
+      <% end %>
+    </div>
 </div> 
 
              <div class="price">

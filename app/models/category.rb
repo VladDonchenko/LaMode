@@ -4,6 +4,8 @@ class Category < ApplicationRecord
 
 
 	def to_param
-  [id, title.parameterize].join("-")
+   "#{id}-#{title.gsub(/[^a-z0-9]+/i, '-')}"
  end
+
+
 end
