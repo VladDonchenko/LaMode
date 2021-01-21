@@ -3,7 +3,7 @@
     <img src="..." class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title"><%= product.title %> </h5>
-        <p class="card-text"><%= product.description %></p>
+        <p class="card-text text-truncate"><%= product.description %></p>
         <p class="badge bg-light text-dark"><%= number_to_currency(product.price, unit: "UAH", separator: ",", delimiter: " ", format: "%n %u") %></p>
         <a href="#" class="btn btn-success">Детальніше</a>
       </div>
