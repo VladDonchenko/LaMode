@@ -1,0 +1,41 @@
+<main class="container pt-5">
+        <div class="row pt-5">
+          <div class="col-sm-3 col-12">
+                    <nav class="nav flex-column">
+
+
+<div class="price">
+          </nav>
+          </div>
+          <div class="col-sm-12 col-12">
+            <div>
+            </div>
+
+<p class="invisible"><%= total_price = 0 %></p>
+<div class="col-12">
+  <div class="row">
+    <% @items.each do |item| %>
+    <% total_price += item.product.price * item.quantity%>
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+            </div>
+            <div class="card-footer">
+              <h5 class="card-title"><%= item.product.title %> </h5>
+              <p class="card-text text-truncate"><%= item.product.description %></p>
+              <p class="badge bg-light text-dark"><%= number_to_currency(item.product.price, unit: "UAH", separator: ",", delimiter: " ", format: "%n %u") %></p>
+              <p class="cart-text"> Quantity:<%= item.quantity %>
+
+              <%= link_to '+', add_quantity_product_order_item_path(item.product, item),method: :get, class: "btn btn-default bg-success"%>
+              <%= link_to '-', remove_quantity_product_order_item_path(item.product, item), class: "btn btn-default bg-success", method: :get %>  
+              <p></p>
+              <%= link_to 'Remove from cart', product_order_item_path(item.product, item), class: "btn btn-default bg-success", method: :delete%>
+            </div>
+        </div>
+      </div>
+<% end%>
+<h3>Total price: <%= total_price %> </h3>
+ </div>
+        </div>
+
+      </main><!-- /.container -->

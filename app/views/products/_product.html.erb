@@ -5,7 +5,7 @@
         <h5 class="card-title"><%= product.title %> </h5>
         <p class="card-text text-truncate"><%= product.description %></p>
         <p class="badge bg-light text-dark"><%= number_to_currency(product.price, unit: "UAH", separator: ",", delimiter: " ", format: "%n %u") %></p>
-        <a href="#" class="btn btn-success">Детальніше</a>
+        <%= link_to 'Додати до кошика', product_order_items_path(product), method: :post, class: 'btn btn-success' %>
       </div>
   </div>
 </div>

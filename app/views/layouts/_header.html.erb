@@ -28,6 +28,9 @@
               <% end %>
 
       </ul>
+      <%if current_user %>
+      <%= link_to 'Кошик',order_path(current_order),class: 'btn btn-outline-dark'%>&nbsp;&nbsp;
+      <% end %>
             <%= form_tag products_path, method: :get, class: "form-inline my-2 my-lg-0 search_form", id: "search-form" do %>
               <%= text_field_tag(
                   :search,
