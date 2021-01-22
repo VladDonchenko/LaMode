@@ -1,5 +1,21 @@
-<div class="filter-wrap">
-    <div class="filter-list">
+<main class="container pt-5">
+        <div class="row pt-5">
+          <div class="col-sm-3 col-12">
+                    <nav class="nav flex-column">
+
+                      <% Category.all.each do |category| %>
+                          <%= active_link_to category.title, category_path(category), class: "list-group-item list-group-item-action list-group-item-success"%>
+                      <% end %>
+           <!--<a class="nav-link active" aria-current="page" href="#">Active</a>
+            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>-->
+
+
+          <div class="input-group mb-3">
+      
+
+            <div class="filter-list">
       Sort by price:
       <%= link_to ("From low to high"), products_path(sort: 'lowPrice'), class:'btn-custom-light' %>
       <i>or</i>
@@ -22,21 +38,32 @@
         <% end %>
       <% end %>
     </div>
-  </div>
+</div> 
+
+          <div class="price">
+          </nav>
+          </div>
+          <div class="col-sm-9 col-12">
+            <div>
+            </div>
 
 <div class="row db-6">
 <% @category.products.each do |product| %>
 <div class="col-lg-4 col-md-6 mb-4">
-  <div class="card">
-    <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title"><%= product.title %> </h5>
-        <p class="card-text"><%= product.description %></p>
-        <p class="badge bg-light text-dark"><%= number_to_currency(product.price, unit: "UAH", separator: ",", delimiter: " ", format: "%n %u") %></p>
-        <a href="#" class="btn btn-success">Детальніше</a>
-      </div>
-  </div>
-</div> 
+	<div class="card h-100">
+		<div class="card-body">
+	  <img src="<%= product.image %>" class="card-img-top" alt="...">
+	</div>
+	  	<div class="card-footer">
+	    	<h5 class="card-title"><%= product.title %> </h5>
+	    	<p class="card-text text-truncate"><%= product.description %></p>
+	    	<p class="badge bg-light text-dark"><%= number_to_currency(product.price, unit: "UAH", separator: ",", delimiter: " ", format: "%n %u") %></p>
+	    		<% if current_user%>
+	    	<%= link_to 'Додати до кошика', product_order_items_path(product), method: :post, class: "btn btn-default bg-success" %>
+	    	<%end%>
+	  	</div>
+	</div>
+</div>
 
 <% end %>
 
@@ -44,5 +71,8 @@
     <%= will_paginate @products, :container => false %>
 </div>
 
+ </div>
+        </div>
 
+      </main><!-- /.container -->
 

@@ -1,11 +1,15 @@
 <div class="col-lg-4 col-md-6 mb-4">
-  <div class="card">
-    <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title"><%= product.title %> </h5>
-        <p class="card-text text-truncate"><%= product.description %></p>
-        <p class="badge bg-light text-dark"><%= number_to_currency(product.price, unit: "UAH", separator: ",", delimiter: " ", format: "%n %u") %></p>
-        <%= link_to 'Додати до кошика', product_order_items_path(product), method: :post, class: 'btn btn-success' %>
-      </div>
-  </div>
+	<div class="card h-100">
+		<div class="card-body">
+	  <img src="<%= product.image %>" class="card-img-top" alt="...">
+	</div>
+	  	<div class="card-footer">
+	    	<h5 class="card-title"><%= product.title %> </h5>
+	    	<p class="card-text text-truncate"><%= product.description %></p>
+	    	<p class="badge bg-light text-dark"><%= number_to_currency(product.price, unit: "UAH", separator: ",", delimiter: " ", format: "%n %u") %></p>
+	    		<% if current_user%>
+	    	<%= link_to 'Додати до кошика', product_order_items_path(product), method: :post, class: "btn btn-default bg-success" %>
+	    	<%end%>
+	  	</div>
+	</div>
 </div>

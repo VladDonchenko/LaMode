@@ -16,11 +16,13 @@
   <div class="row">
     <% @items.each do |item| %>
     <% total_price += item.product.price * item.quantity%>
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-3 col-md-6 mb-4">
           <div class="card h-100">
             <div class="card-body">
+              <img src="<%= item.product.image %>" class="card-img-top" alt="...">
             </div>
             <div class="card-footer">
+              
               <h5 class="card-title"><%= item.product.title %> </h5>
               <p class="card-text text-truncate"><%= item.product.description %></p>
               <p class="badge bg-light text-dark"><%= number_to_currency(item.product.price, unit: "UAH", separator: ",", delimiter: " ", format: "%n %u") %></p>
