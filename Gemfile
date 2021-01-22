@@ -11,6 +11,7 @@ gem 'sqlite3', '~> 1.4.2', group: :development
 gem 'pg', group: :production
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
+gem "aws-sdk-s3", require: false
 
 gem 'activeadmin'
 gem 'devise'
