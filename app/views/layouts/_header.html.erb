@@ -21,6 +21,12 @@
             <li><a class="dropdown-item" href="#">+38-(050)-111-11-11</a></li>
           </ul>
         </li>
+      <% if current_user %>
+              <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link'%>
+              <% else %>
+              <%= link_to 'Sign in',new_user_session_path,class: 'nav-link'%>
+              <% end %>
+
       </ul>
             <%= form_tag products_path, method: :get, class: "form-inline my-2 my-lg-0 search_form", id: "search-form" do %>
               <%= text_field_tag(
