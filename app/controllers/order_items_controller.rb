@@ -34,5 +34,4 @@ def create
     order_item.destroy
     redirect_to order_path(current_order)
   end
-
 end

@@ -39,11 +39,15 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def new
+    @category = Category.new(:parent_id => params[:parent_id])
+  end
+
 
 private
 
   def category_params
-      params.require(:category).permit(:title)
+      params.require(:category).permit(:title, :ancestry)
     end
 
 end

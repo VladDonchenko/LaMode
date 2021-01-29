@@ -20,8 +20,17 @@ class ProductsController < ApplicationController
 
 
   def show
-    @product = Product.find(params[:id]).paginate(page: params[:page], per_page: 6)
+    @product = Product.find(params[:id])
+            @comment = @product.comments
   end
+
+  
+      def avg_rating
+    @total_rating = 0
+    @comments.each { |r| @total_rating += r.rating }
+    @average_rating = (@total_rating.to_f / @comments.count.to_f) if @comments.present?
+  end
+
 
   def search
     @products = Product.where("name ILIKE ? OR description ILIKE ?", "%#{params[:query]}%", "%#{params[:query]}%").paginate(page: params[:page], per_page: 6)

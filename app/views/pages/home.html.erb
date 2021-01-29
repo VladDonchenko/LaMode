@@ -3,7 +3,7 @@
           <div class="col-sm-3 col-12">
                     <nav class="nav flex-column">
 
-                      <% Category.all.each do |category| %>
+                      <% Category.roots.each do |category| %>
                           <%= active_link_to category.title, category_path(category), class: "list-group-item list-group-item-action list-group-item-success"%>
                       <% end %>
            <!--<a class="nav-link active" aria-current="page" href="#">Active</a>

@@ -9,12 +9,16 @@ gem 'rails', '~> 6.1.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4.2', group: :development
 gem 'pg', group: :production
+gem 'ancestry', '~> 3.2.1'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 gem "aws-sdk-s3", require: false
 
 gem 'activeadmin'
-gem 'devise'
+gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
+gem 'omniauth-rails_csrf_protection'
+gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
+
 gem 'kaminari'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
