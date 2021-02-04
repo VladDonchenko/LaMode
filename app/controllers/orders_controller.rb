@@ -16,8 +16,8 @@ class OrdersController < ApplicationController
   end
 
   def complete
+     Order.find(params[:id]).update(status: 1)
     OrderMailer.with(user: current_user).complete_order.deliver_now
-    redirect_to root_path
   end
 
   private
