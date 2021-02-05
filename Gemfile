@@ -7,8 +7,7 @@ ruby '2.7.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.1'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4.2', group: :development
-gem 'pg', group: :production
+gem 'pg'
 gem 'ancestry', '~> 3.2.1'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
@@ -56,6 +55,13 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem "capistrano"
+  gem "capistrano-rvm"
+  gem "capistrano-rails"
+  gem "capistrano3-puma", github: "seuros/capistrano-puma"
+  gem "capistrano-nginx", "~> 1.0"
+  gem "capistrano-upload-config"
+  gem "sshkit-sudo"
 end
 
 group :test do
