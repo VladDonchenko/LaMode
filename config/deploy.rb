@@ -1,6 +1,6 @@
 lock "~> 3.15.0"
 
-set :repo_url, "git@github.com:VladDonchenko/TechnoBoom.git"
+set :repo_url, "https://github.com/VladDonchenko/TechnoBoom.git"
 ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 set :user, "deployer"
