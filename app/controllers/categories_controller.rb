@@ -1,6 +1,5 @@
 class CategoriesController < ApplicationController
-skip_before_action :verify_authenticity_token
-  
+
 	  def index
     @categories = Category.all.paginate(page: params[:page], per_page: 6)
 
