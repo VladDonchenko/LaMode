@@ -19,8 +19,8 @@
         <div style="text-align: center;">
         	 <% if current_user.present? %>
 	        	<% if current_user.email == comment.user.email %>
-	        		<%= link_to ("Редагувати"), edit_comment_path(comment), class: "btn btn-outline-success" %>
-	            	<%= link_to ("Видалити"), comment_path(comment), method: :delete, class: "btn btn-outline-success",
+	        		<%= link_to ("Редагувати"), edit_comment_path(comment), class: "btn btn-outline-dark" %>
+	            	<%= link_to ("Видалити"), comment_path(comment), method: :delete, class: "btn btn-outline-dark",
 	                              data: {confirm: 'Confirm delete your comment?'} %>
 	             <% end %>
             <% end %>

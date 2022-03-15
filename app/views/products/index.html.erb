@@ -1,10 +1,10 @@
-<main class="container pt-5">
-        <div class="row pt-5">
-          <div class="col-sm-3 col-12">
-                    <nav class="nav flex-column">
+<main class="container pt-5" >
+        <div class="row pt-5" >
+          <div class="col-sm-4 col-12" >
+                    <nav class="nav flex-column" >
 
                       <% Category.roots.each do |category| %>
-                          <%= active_link_to category.title, category_path(category), class: "list-group-item list-group-item-action list-group-item-success"%>
+                          <%= active_link_to category.title, category_path(category), class: "list-group-item list-group-item-action list-group-item-dark"%>
                             <% if category.has_children? %>
                 							<% Category.children_of(category).each do |sub_category| %>
                 							<i><%= active_link_to sub_category.title, category_path(sub_category), class: 'list-group-item list-group-item-action list-group-item-warning'%></i>

@@ -1,8 +1,11 @@
+  </br>
+</br>
+  <div class="container">
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <div class="pt-5">
 <section class="mb-5">
 
-  <div class="row">
+  <div class="row" style="color: white; font: italic small-caps bold 20px/2 cursive;">
     <div class="col-md-6 mb-4 mb-md-0">
 
       <div id="mdb-lightbox-ui"></div>
@@ -41,12 +44,12 @@
       </div>
       <hr>
       <% if current_user.present? %>
-    <%= link_to 'Додати до кошика', product_order_items_path(@product), method: :post, class: "btn btn-outline-success"%>
+    <%= link_to 'Додати до кошика', product_order_items_path(@product), method: :post, class: "btn btn-outline-light"%>
     <% else %>
     <p><%= link_to 'Увійти в систему', new_user_session_path %> для того щаб додати цей продукт до кошика </p>
     <% end %>
     <% if allowed_to_comment(@product) %>
-      <%= link_to 'Додати коментар', new_comment_path(user_id: current_user, product_id: @product), method: :get, class: "btn btn-outline-success"%>
+      <%= link_to 'Додати коментар', new_comment_path(user_id: current_user, product_id: @product), method: :get, class: "btn btn-outline-light"%>
       <% end %>
 
 
@@ -56,7 +59,7 @@
 </section>
 <!--Section: Block Content-->
 </div>
- <div class="col-lg-6 sm-12">
-
-   <%= render 'comments/comment_show' %>
-   </div>
+  <div class="col-lg-12 sm-12">
+   <%= render 'comments/comment_show' %>  
+  </div>
+ </div>

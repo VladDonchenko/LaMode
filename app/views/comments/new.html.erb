@@ -1,5 +1,6 @@
+<div class="container" style="color: white;">
 <div class="pt-5" style="position: relative; top: 40px; left: 50px;">
-	<h2> Rate this product and give your feedback </h2>
+	<h2> Напишіть ваш відгук </h2>
 	<%= form_for @comment do |f| %>
 		<% if @comment.errors.any? %>
 			<% @comment.errors.full_messages.each do |message| %>
@@ -7,19 +8,19 @@
 			<% end %>
 		<% end %>
 	<div>
-		<%= f.label :body %>
 		<%= f.text_area :body, class: 'form-control', rows: "2" %>
 	</div>
 	<br>
 
 	<div>
-		<%= f.label :rating %>
+		<p>Ваша оцінка</p>
 		<%= f.select :rating, [*1..5], :prompt => 'Select' %>
 	</div>
 	<br>
 
 	<%= f.hidden_field :user_id %>
 	<%= f.hidden_field :product_id %>
-	<div><%= f.submit %></div>
+	<div><%= f.submit "Створити коментар", class: "btn btn-outline-light"%></div>
 <% end %>
+</div>
 </div>

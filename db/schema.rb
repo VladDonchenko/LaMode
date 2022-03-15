@@ -12,13 +12,16 @@
 
 ActiveRecord::Schema.define(version: 2021_01_29_174809) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
     t.string "resource_type"
-    t.integer "resource_id"
+    t.bigint "resource_id"
     t.string "author_type"
-    t.integer "author_id"
+    t.bigint "author_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author"
@@ -48,8 +51,8 @@ ActiveRecord::Schema.define(version: 2021_01_29_174809) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "product_id"
+    t.bigint "user_id"
+    t.bigint "product_id"
     t.text "body"
     t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
@@ -59,9 +62,9 @@ ActiveRecord::Schema.define(version: 2021_01_29_174809) do
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.integer "order_id", null: false
-    t.integer "user_id", null: false
-    t.integer "product_id", null: false
+    t.bigint "order_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "product_id", null: false
     t.integer "quantity", default: 1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -71,7 +74,7 @@ ActiveRecord::Schema.define(version: 2021_01_29_174809) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.integer "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -84,7 +87,7 @@ ActiveRecord::Schema.define(version: 2021_01_29_174809) do
     t.decimal "price", precision: 10, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "category_id"
+    t.bigint "category_id"
     t.string "image"
     t.index ["category_id"], name: "index_products_on_category_id"
   end
